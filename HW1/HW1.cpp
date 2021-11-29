@@ -6,10 +6,11 @@ using namespace std;
 vector<int> rem(vector<int> numbers, int x) {
 	vector<int> remove;
 	for (int i = 0; i < numbers.size(); ++i) {
-		if (numbers[i] == x) ++i;
-		else remove.push_back(numbers[i]);
+		if(numbers[i] != x) remove.push_back(numbers[i]);
 	}
+
 	numbers.clear();
+
 	for (int i = 0; i < remove.size(); ++i) {
 		numbers.push_back(remove[i]);
 	}
@@ -17,8 +18,10 @@ vector<int> rem(vector<int> numbers, int x) {
 }
 
 int main() {
+
 	vector<int> numbers;
 	int x;
+
 	do {
 		cout << "Input amount of numbers: ";
 		cin >> x;
@@ -35,7 +38,7 @@ int main() {
 
 	cout << "Input number for remove: ";
 	cin >> x;
-	rem(numbers, x);
+	numbers = rem(numbers, x);
 	for (int i = 0; i < numbers.size(); ++i) {
 		cout << numbers[i] << " ";
 	}
