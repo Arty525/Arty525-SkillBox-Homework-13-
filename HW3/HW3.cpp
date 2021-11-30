@@ -4,9 +4,15 @@
 using namespace std;
 
 vector<int> remove(vector<int> numbers) {
-	reverse(numbers[0], numbers[numbers.size() - 1]);
-	numbers.pop_back();
-	reverse(numbers[0], numbers[numbers.size() - 1]);
+	vector<int> renumbers;
+	for (int i = 0; i < numbers.size(); ++i) {
+		renumbers.push_back(numbers[numbers.size() - 1 - i]);
+	}
+	renumbers.pop_back();
+	numbers.clear();
+	for (int i = 0; i < renumbers.size(); ++i) {
+		numbers.push_back(renumbers[renumbers.size() - 1 - i]);
+	}
 	return numbers;
 }
 
@@ -17,10 +23,12 @@ int main() {
 	do {
 		cout << "Input number: ";
 		cin >> n;
-		if (numbers.size() == 21) {
-			numbers = remove(numbers);
+		if(n != -1){
+			if (numbers.size() == 20) {
+				numbers = remove(numbers);
+			}
+			numbers.push_back(n);
 		}
-		numbers.push_back(n);
 	} while (n != -1);
 
 	for (int i = 0; i < numbers.size(); ++i) {
