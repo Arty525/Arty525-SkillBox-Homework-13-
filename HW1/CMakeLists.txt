@@ -6,6 +6,6 @@ cmake_minimum_required (VERSION 3.8)
 project ("HW1")
 
 # Добавьте источник в исполняемый файл этого проекта.
-add_executable (HW1 "HW1.cpp" "HW1.h")
+add_executable (HW1 "HW1.cpp" "HW1.h" )
 
 # TODO: Добавьте тесты и целевые объекты, если это необходимо.

@@ -3,20 +3,6 @@
 
 using namespace std;
 
-vector<int> rem(vector<int> numbers, int x) {
-	vector<int> remove;
-	for (int i = 0; i < numbers.size(); ++i) {
-		if(numbers[i] != x) remove.push_back(numbers[i]);
-	}
-
-	numbers.clear();
-
-	for (int i = 0; i < remove.size(); ++i) {
-		numbers.push_back(remove[i]);
-	}
-	return numbers;
-}
-
 int main() {
 
 	vector<int> numbers;
@@ -36,9 +22,21 @@ int main() {
 		numbers.push_back(number);
 	}
 
-	cout << "Input number for remove: ";
+	cout << "Input number for delete: ";
 	cin >> x;
-	numbers = rem(numbers, x);
+
+	int n = 0;
+
+	for (int i = 0; i < numbers.size(); ++i) {
+		if (numbers[i] != x) numbers[i - n] = numbers[i];
+		else {
+			for (n; numbers[i] == x; ++n) ++i;
+			--i;
+		}
+	}
+
+	numbers.resize(numbers.size() - n);
+
 	for (int i = 0; i < numbers.size(); ++i) {
 		cout << numbers[i] << " ";
 	}
